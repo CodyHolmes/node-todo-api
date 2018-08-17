@@ -99,7 +99,6 @@ app.patch('/todos/:id', (req, res) => {
     });
 });
 
-
 /* USER - NEW */
 app.post('/users', (req, res) => {
     const body = _.pick(req.body, ['email', 'password']);
@@ -113,8 +112,6 @@ app.post('/users', (req, res) => {
         res.status(400).send(e);
     })
 });
-
-
 
 /* USER - CURRENT USER */
 app.get('/users/me', authenticate, (req, res)=> {
