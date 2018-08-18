@@ -121,7 +121,7 @@ describe('DELETE /todos', () => {
                 }
 
                 Todo.findById(hexID).then((todo) => {
-                    expect(todo).toBeNull();
+                    expect(todo).toBeFalsy();
                     done();
                 }).catch((e) => done(e));
             });
@@ -213,7 +213,7 @@ describe('PATCH /todos', () => {
             .expect((res) => {
                 expect(res.body.todo.text).toBe(text);
                 expect(res.body.todo.completed).toBe(false);
-                expect(res.body.todo.completedAt).toBeNull();
+                expect(res.body.todo.completedAt).toBeFalsy();
             })
             .end(done);
     });
@@ -255,7 +255,7 @@ describe('POST /users', () => {
             .expect((res) => {
                 expect(res.headers['x-auth']).toBeTruthy();
                 expect(res.body._id).toBeTruthy();
-                expect(res.body.email).toBeTruthy();
+                expect(res.body.email).toBe(email);
             })
             .end((err) => {
                 if(err) {
